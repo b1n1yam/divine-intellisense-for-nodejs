@@ -3,7 +3,7 @@
   "displayName": "DIN-Divine Intellisense for NodeJs",
   "description": "Provides snippets, boilerplate code for  Node, Express, React and Redux",
   "publisher": "Biniyam",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "icon": "icon.png",
   "repository": {
     "type": "git",
