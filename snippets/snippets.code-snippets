@@ -1,0 +1,333 @@
+{
+	"Node controller": {
+		"prefix": "nc",
+		"body": [
+			"${1:controller}:async (req, res, next) => {",
+			"    try {",
+			"        $2",
+			"    } catch (error) {",
+			"      console.log(`error`, error);",
+			"      res.status(500).json(\"server error!\");",
+			"    }",
+			"  },"
+		],
+		"description": "Node Single controller"
+	},
+	"Node controller bulk": {
+		"prefix": "ncb",
+		"body": [
+			"module.exports = {",
+			"  create${1:Module}: async (req, res, next) => {",
+			"    try {",
+			"       ",
+			"    } catch (error) {",
+			"      console.log(`error`, error);",
+			"      res.status(500).json(\"server error!\");",
+			"    }",
+			"  },",
+			"  get${1:Module}: async (req, res, next) => {",
+			"    try {",
+			"       ",
+			"    } catch (error) {",
+			"      console.log(`error`, error);",
+			"      res.status(500).json(\"server error!\");",
+			"    }",
+			"  },",
+			"  edit${1:Module}: async (req, res, next) => {",
+			"    try {",
+			"       ",
+			"    } catch (error) {",
+			"      console.log(`error`, error);",
+			"      res.status(500).json(\"server error!\");",
+			"    }",
+			"  },",
+			"  delete${1:Module}: async (req, res, next) => {",
+			"    try {",
+			"       ",
+			"    } catch (error) {",
+			"      console.log(`error`, error);",
+			"      res.status(500).json(\"server error!\");",
+			"    }",
+			"  },",
+			"};"
+		],
+		"description": "Node controller bulk for CRUD"
+	},
+	"express route": {
+		"prefix": "er",
+		"body": [
+			"//@route GET /$4",
+			"//@desc $5",
+			"//access $6",
+			"router.route(\"/${1}\").${2|get,post,put,delete|}(${3:controller});",
+			""
+		],
+		"description": "express route"
+	},
+	"express route bulk": {
+		"prefix": "erb",
+		"body": [
+			"const router = require(\"express-promise-router\")();",
+			"const {",
+			"  create${1:Module},",
+			"  edit${1:Module},",
+			"  get${1:Module},",
+			"  delete${1:Module}",
+			"} = require(\"\");",
+			" ",
+			" ",
+			"",
+			"//@route POST /${1:Module}",
+			"//@desc  create a ${1:Module}",
+			"//access  ",
+			"router.route(\"/\").post( create${1:Module});",
+			"",
+			"//@route GET /${1:Module}",
+			"//@desc get ${1:Module}",
+			"//access ",
+			"router.route(\"/\").get( get${1:Module});",
+			"",
+			"//@route PUT /${1:Module}/:id",
+			"//@desc edit a ${1:Module}",
+			"//access ",
+			"router.route(\"/:id\").put(edit${1:Module});",
+			"",
+			"//@route DELETE /${1:Module}/:id",
+			"//@desc remove ${1:Module}",
+			"//access ",
+			"router.route(\"/:id\").delete( delete${1:Module});",
+			"",
+			"module.exports = router;"
+		],
+		"description": "express route bulk"
+	},
+	"action despatcher": {
+		"prefix": "acce",
+		"body": [
+			"//${4}",
+			"export const ${1:typeName}= () => ({",
+			"  type: ${2:typeFile}.${3:type},",
+			"});",
+			"export const ${1}Success = (payload) => ({",
+			"  type:  ${2:typeFile}.${3:type}_SUCCESS,",
+			"  payload",
+			"});",
+			"",
+			"export const ${1}Failed = (payload) => ({",
+			"  type:  ${2:typeFile}.${3:type}_FAIL,",
+			"  payload",
+			"});"
+		],
+		"description": "action despatcher"
+	},
+	"action despatcher without [export]": {
+		"prefix": "acc",
+		"body": [
+			"//${4}",
+			"${1:typeName}: () => ({",
+			"  type: ${2:typeFile}.${3:type},",
+			"}),",
+			"${1}Success: (payload) => ({",
+			"  type:  ${2:typeFile}.${3:type}_SUCCESS,",
+			"  payload",
+			"}),",
+			"",
+			"${1}Failed: (payload) => ({",
+			"  type:  ${2:typeFile}.${3:type}_FAIL,",
+			"  payload",
+			"}),"
+		],
+		"description": "action despatcher"
+	},
+	"action despatcher with payload without [export]": {
+		"prefix": "accp",
+		"body": [
+			"//${4}",
+			"${1:typeName}: (payload) => ({",
+			"  type: ${2:typeFile}.${3:type},",
+			"  payload",
+			"});",
+			"${1}Success : (payload) => ({",
+			"  type:  ${2:typeFile}.${3:type}_SUCCESS,",
+			"  payload",
+			"});",
+			"",
+			"${1}Failed : (payload) => ({",
+			"  type:  ${2:typeFile}.${3:type}_FAIL,",
+			"  payload",
+			"});"
+		],
+		"description": "action despatcher with payload"
+	},
+	"action despatcher with payload": {
+		"prefix": "accpe",
+		"body": [
+			"//${4}",
+			"export const ${1:typeName}= (payload) => ({",
+			"  type: ${2:typeFile}.${3:type},",
+			"  payload",
+			"});",
+			"export const ${1}Success = (payload) => ({",
+			"  type:  ${2:typeFile}.${3:type}_SUCCESS,",
+			"  payload",
+			"});",
+			"",
+			"export const ${1}Failed = (payload) => ({",
+			"  type:  ${2:typeFile}.${3:type}_FAIL,",
+			"  payload",
+			"});"
+		],
+		"description": "action despatcher with payload"
+	},
+	"action despatcher without a payload and export": {
+		"prefix": "accnp",
+		"body": [
+			"//${4}",
+			" ${1:typeName}:(payload) => ({",
+			"  type: ${2:typeFile}.${3:type},",
+			"  payload",
+			"});",
+			" ${1}Success :(payload) => ({",
+			"  type:  ${2:typeFile}.${3:type}_SUCCESS,",
+			"  payload",
+			"});",
+			"",
+			" ${1}Failed :(payload) => ({",
+			"  type:  ${2:typeFile}.${3:type}_FAIL,",
+			"  payload",
+			"});"
+		],
+		"description": "action despatcher without a payload"
+	},
+	"action despatcher without a payload": {
+		"prefix": "accnpe",
+		"body": [
+			"//${4}",
+			"export const ${1:typeName}= (payload) => ({",
+			"  type: ${2:typeFile}.${3:type},",
+			"  payload",
+			"});",
+			"export const ${1}Success = (payload) => ({",
+			"  type:  ${2:typeFile}.${3:type}_SUCCESS,",
+			"  payload",
+			"});",
+			"",
+			"export const ${1}Failed = (payload) => ({",
+			"  type:  ${2:typeFile}.${3:type}_FAIL,",
+			"  payload",
+			"});"
+		],
+		"description": "action despatcher without a payload"
+	},
+	"saga file structure": {
+		"prefix": "saga",
+		"body": [
+			"import {call, put, takeLatest, all} from 'redux-saga/effects';",
+			" ",
+			" // ${1:${TM_FILENAME_BASE}}",
+			"",
+			"//watcher setup",
+			"export function* watcher${1:${TM_FILENAME_BASE}}() {",
+			"  yield all([",
+			"  ]);",
+			"}"
+		],
+		"description": "saga file structure"
+	},
+	"action file structure": {
+		"prefix": "action",
+		"body": [
+			 
+			" ",
+	 
+			"",
+ 
+			"export const action={",
+			"  ",
+			"  ${1}",
+			"}"
+		],
+		"description": "saga file structure"
+	},
+	"saga function with payload ": {
+		"prefix": "sfcp",
+		"body": [
+			"// ${1} saga",
+			" export function* ${1}Saga( {payload} ) {",
+			"  try {",
+			"    const res = yield call(axios.${2|get,post,put,delete|}, \"${3}\", payload);",
+			"    yield put(${1}Success(res.data));",
+			"  } catch (error) {",
+			"    console.log(error);",
+			"    yield put(${1}Fail(error));",
+			"  }",
+			"}",
+			"export function* watch${1}() {",
+			"  yield takeLatest(${4}, ${1}Saga);",
+			"}"
+		],
+		"description": "saga function with payload "
+	},
+	"saga function ": {
+		"prefix": "sfc",
+		"body": [
+			"// ${1} saga",
+			" export function* ${1}Saga() {",
+			"  try {",
+			"    const res = yield call(axios.${2|get,post,put,delete|}, \"${3}\");",
+			"    yield put(${1}Success(res.data));",
+			"  } catch (error) {",
+			"    console.log(error);",
+			"    yield put(${1}Failed(error));",
+			"  }",
+			"}",
+			"export function* watch${1}() {",
+			"  yield takeLatest(${4}, ${1}Saga);",
+			"}"
+		],
+		"description": "saga function with payload "
+	},
+	"reducer default state": {
+		"prefix": "redstate",
+		"body": [
+			"  ${1}:undefined,",
+			"  ${1}Loading:false,",
+			"  ${1}Error:undefined,"
+		],
+		"description": "reducer default state"
+	},
+	"reducer cases ": {
+		"prefix": "rcase",
+		"body": [
+			"case ${1}:",
+			"      return {",
+			"        ...state,",
+			"        ${2}Loading: true,",
+			"      }",
+			"    case ${1}_SUCCESS:",
+			"      return {",
+			"        ...state,",
+			"        ${2}Loading: false,",
+			"        ${2}: payload,",
+			"      }",
+			"    case ${1}_FAIL:",
+			"      return {",
+			"        ...state,",
+			"        ${2}Loading: false,",
+			"        ${2}Error: payload,",
+			"      }",
+			""
+		],
+		"description": "reducer cases "
+	},
+	"react types": {
+		"prefix": "rtype",
+		"body": [
+			"//${1} ",
+			"${1}: '${1}',",
+			" ${1}_SUCCESS: ' ${1}_SUCCESS',",
+			" ${1}_FAIL: '${1}_FAIL',"
+		],
+		"description": "react types"
+	}
+}
