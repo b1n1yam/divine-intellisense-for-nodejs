@@ -27,7 +27,7 @@ You can easly generate expres routes and controllers for a bulk-CRUD opperation 
 ### Node js Controller Bulk generator ```ncb→```
 
 
-![screen-gif](./assets/express_route.gif)
+![screen-gif](./assets/node_controller.gif)
 
 → Denotes the `TAB` key.
 
@@ -56,6 +56,8 @@ This extention provides snippets for the most repetitive tasks on redux
 ![screen-gif](./assets/react_reducer.gif)
 
 → Denotes the `TAB` key.
+
+
 | Snippet→   | Type  | Output                                                                                                  |
 | ---------- | --------   | ------------------------------------------------------------------------------------------------------- |
 | `accpe→`  | `block`      |  Action dispatcher block with *payload and export*    
